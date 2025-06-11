@@ -1,8 +1,9 @@
 #include "input.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-usage_message(char *bf) {
+void usage_message(char *bf) {
     fprintf(stderr, "Usage 1: %s <input_file>\n", bf);
     fprintf(stderr, "Usage 2: %s <input_file> -o <output_file>\n", bf);
     fprintf(stderr, "Usage 3: %s -o <output_file> <input_file>\n", bf);
