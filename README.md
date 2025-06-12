@@ -66,6 +66,18 @@ Use this command when you want to rebuild the compiler from scratch or clean up 
 
 ---
 
+### Clean except the `bf` compiler
+
+If you want to remove all generated files **except** the `bf` compiler executable, run:
+
+```bash
+make clean_except_bf
+```
+
+Use this command to remove all generated files while keeping the `bf` compiler.
+
+---
+
 ## Brainfuck Commands
 
 Brainfuck is a minimalist programming language with only 8 commands. These commands operate on an array of memory cells (usually bytes) and a data pointer that moves along the cells. Understanding these commands is key to writing and reading Brainfuck programs.
