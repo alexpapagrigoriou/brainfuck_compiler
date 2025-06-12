@@ -52,7 +52,7 @@ void check_command(char c, int *brackets) {
     }
 }
 
-void check_bf_code(char *code) {
+void check_bf_code(const char *code) {
     int brackets = 0;
 
     for (size_t i = 0; code[i] != '\0'; i++) {

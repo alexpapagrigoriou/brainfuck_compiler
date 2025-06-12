@@ -2,6 +2,7 @@
 #include "check.h"
 #include "parser.h"
 #include "input.h"
+#include "output.h"
 
 int main(int argc, char *argv[]) {
     check_args(argc, argv);
@@ -14,7 +15,7 @@ int main(int argc, char *argv[]) {
 
     check_bf_code(code);
 
-    // create_output_file();
+    create_output_file(code, comma_counter);
 
     return 0;
 }
