@@ -5,7 +5,7 @@
 #define BF_SIZE 30000
 #define BRACKET_MAX 100
 
-void greater_than(size_t *index) {
+static void greater_than(size_t *index) {
     if (*index >= BF_SIZE - 1) {
         fprintf(stderr, "\nCompilation error: Range error.\n");
         exit(EXIT_FAILURE);
@@ -14,7 +14,7 @@ void greater_than(size_t *index) {
     (*index)++;
 }
 
-void less_than(size_t *index) {
+static void less_than(size_t *index) {
     if (*index <= 0) {
         fprintf(stderr, "\nCompilation error: Range error.\n");
         exit(EXIT_FAILURE);
@@ -23,7 +23,7 @@ void less_than(size_t *index) {
     (*index)--;
 }
 
-void open_bracket(int *brackets) {
+static void open_bracket(int *brackets) {
     if (*brackets >= BRACKET_MAX - 1) {
         fprintf(stderr, "\nCompilation error: Bracket stack overflow.\n");
         exit(EXIT_FAILURE);
@@ -32,7 +32,7 @@ void open_bracket(int *brackets) {
     (*brackets)++;
 }
 
-void close_bracket(int *brackets) {
+static void close_bracket(int *brackets) {
     if (*brackets <= 0) {
         fprintf(stderr, "\nCompilation error: Unbalanced brackets.\n");
         exit(EXIT_FAILURE);
@@ -41,7 +41,7 @@ void close_bracket(int *brackets) {
     (*brackets)--;
 }
 
-void check_command(char c, int *brackets) {
+static void check_command(char c, int *brackets) {
     static size_t index = 0;
 
     switch (c) {

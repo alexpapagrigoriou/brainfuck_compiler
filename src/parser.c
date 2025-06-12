@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void check_filename(const char *filename) {
+static void check_filename(const char *filename) {
     if (filename[0] == '.' || filename[0] == '-') {
         fprintf(stderr, "Invalid output_file: Filename can't start with '.' or '-'.\n");
         exit(EXIT_FAILURE);

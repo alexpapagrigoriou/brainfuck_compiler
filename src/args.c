@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void usage_message(const char *bf) {
+static void usage_message(const char *bf) {
     fprintf(stderr, "Usage 1: %s <input_file>\n", bf);
     fprintf(stderr, "Usage 2: %s <input_file> -o <output_file>\n", bf);
     fprintf(stderr, "Usage 3: %s -o <output_file> <input_file>\n", bf);
