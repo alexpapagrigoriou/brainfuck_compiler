@@ -1,6 +1,7 @@
 #include "check.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void usage_message(const char *bf) {
     fprintf(stderr, "Usage 1: %s <input_file>\n", bf);
@@ -8,7 +9,7 @@ void usage_message(const char *bf) {
     fprintf(stderr, "Usage 3: %s -o <output_file> <input_file>\n", bf);
 }
 
-void check_args(int argc, const char *argv[]) {
+void check_args(int argc, char *argv[]) {
     if (argc < 2 || argc == 3 || argc > 4) {
         usage_message(argv[0]);
         exit(EXIT_FAILURE);

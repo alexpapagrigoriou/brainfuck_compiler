@@ -1,6 +1,6 @@
 #ifndef CHECK_H
 #define CHECK_H
 
-void check_args(int argc, const char *argv[]);
+void check_args(int argc, char *argv[]);
 
 #endif
