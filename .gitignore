@@ -6,5 +6,6 @@
 !sample_bf_code/
 !Makefile
 !README.md
+!LICENSE
 
 compiler_src/main.c
