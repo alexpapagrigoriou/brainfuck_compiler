@@ -1,7 +1,7 @@
 all: bf
 
 bf: src/main.c src/args.c src/check.c src/parser.c src/input.c src/output.c src/compiler.c
-	gcc src/main.c src/args.c src/check.c src/parser.c src/input.c src/output.c src/compiler.c -o bf
+	@gcc src/main.c src/args.c src/check.c src/parser.c src/input.c src/output.c src/compiler.c -o bf
 	@echo "Build complete: bf compiler created successfully."
 
 clean:
