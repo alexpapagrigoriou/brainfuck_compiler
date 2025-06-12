@@ -40,7 +40,9 @@ void get_comma_inputs(int comma_counter) {
             printf("\nComma inputs (Provide %d more character%s for ',' commands):\n", commas_left, (commas_left == 1 ? "" : "s"));
         }
     }
-    printf("\n\n");
+    printf("\n");
+
+    printf("Output:\n");
 }
 
 char next_comma_input() {

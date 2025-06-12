@@ -81,13 +81,11 @@ static void generate_bf_source(FILE *file, const char *code) {
 static void generate_file(FILE *file, const char *code, int comma_counter) {
     fprintf(file, "#include \"main.h\"\n");
     fprintf(file, "\n");
-    fprintf(file, "#define COMMAS %d\n", comma_counter);
-    fprintf(file, "\n");
     fprintf(file, "int main() {\n");
     fprintf(file, TAB "char bf[BF_SIZE] = {0};\n");
     fprintf(file, TAB "char *ptr = bf;\n");
     fprintf(file, "\n");
-    fprintf(file, TAB "get_comma_inputs(COMMAS);\n");
+    fprintf(file, TAB "get_comma_inputs(%d);\n", comma_counter);
     fprintf(file, "\n");
 
     generate_bf_source(file, code);
