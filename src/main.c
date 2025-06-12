@@ -3,6 +3,7 @@
 #include "parser.h"
 #include "input.h"
 #include "output.h"
+#include "compiler.h"
 
 int main(int argc, char *argv[]) {
     check_args(argc, argv);
@@ -15,7 +16,9 @@ int main(int argc, char *argv[]) {
 
     check_bf_code(code);
 
-    create_output_file(code, comma_counter, output_file);
+    generate_compiler_file(code, comma_counter);
+
+    compile_generated_file(output_file);
 
     return 0;
 }

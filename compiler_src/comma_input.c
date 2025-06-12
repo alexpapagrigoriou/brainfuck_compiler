@@ -13,7 +13,7 @@ void get_comma_inputs(int comma_counter) {
     }
 
     comma_inputs = malloc(comma_counter);
-    if (comma_inputs == NULL) {
+    if (!comma_inputs) {
         perror("Memory allocation failed.\n");
         exit(EXIT_FAILURE);
     }

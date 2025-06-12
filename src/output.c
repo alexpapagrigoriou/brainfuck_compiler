@@ -40,7 +40,7 @@ static void dot(FILE *file) {
 
 static void comma(FILE *file) {
     print_tabs(file);
-    fprintf(file, "*p = next_comma_input();\n");
+    fprintf(file, "*ptr = next_comma_input();\n");
 }
 
 static void open_bracket(FILE *file) {
@@ -92,14 +92,15 @@ static void generate_file(FILE *file, const char *code, int comma_counter) {
 
     generate_bf_source(file, code);
 
-    fprintf(file, "putchar('\n');\n");
+    fprintf(file, TAB "putchar('\\n');\n");
+    fprintf(file, "\n");
     fprintf(file, TAB "return 0;\n");
     fprintf(file, "}\n");
 }
 
-void create_output_file(const char *code, int comma_counter, const char *output_file) {
+void generate_compiler_file(const char *code, int comma_counter) {
     FILE *file = fopen("compiler/src/main.c", "w");
-    if (file == NULL) {
+    if (!file) {
         perror("Error creating file.\n");
         exit(EXIT_FAILURE);
     }

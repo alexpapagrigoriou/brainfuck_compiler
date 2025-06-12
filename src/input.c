@@ -9,7 +9,7 @@ static char *add_command(size_t *size, size_t *capacity, char *code, char c, int
     if (*size >= *capacity) {
         *capacity *= 2;
         char *tmp_code = realloc(code, *capacity);
-        if (tmp_code == NULL) {
+        if (!tmp_code) {
             free(code);
             perror("Memory reallocation failed.\n");
             exit(EXIT_FAILURE);
@@ -29,7 +29,7 @@ static char *add_command(size_t *size, size_t *capacity, char *code, char c, int
 
 static char *file_input(const char *filename, size_t *size, size_t *capacity, char *code, int *comma_counter) {
     FILE *file = fopen(filename, "r");
-    if (file == NULL) {
+    if (!file) {
         perror("Error opening file.\n");
         exit(EXIT_FAILURE);
     }
@@ -48,7 +48,7 @@ static char *add_null_terminator(size_t size, size_t capacity, char *code) {
     if (size >= capacity) {
         capacity += 1;
         char *tmp_code = realloc(code, capacity);
-        if (tmp_code == NULL) {
+        if (!tmp_code) {
             perror("Memory reallocation failed.\n");
             exit(EXIT_FAILURE);
         }
@@ -64,7 +64,7 @@ char *read_bf_code(const char *filename, int *comma_counter) {
     size_t capacity = INITIAL_CODE_CAPACITY;
 
     char *code = malloc(capacity);
-    if (code == NULL) {
+    if (!code) {
         perror("Memory allocation failed.\n");
         exit(EXIT_FAILURE);
     }
