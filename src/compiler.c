@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void compile_generated_file(const char *output_file) {
-    const char *template = "gcc compiler/src/main.c compiler/src/comma_input.c -o %s";
+    const char *template = "gcc compiler_src/main.c compiler_src/comma_input.c -o %s";
     size_t len = snprintf(NULL, 0, template, output_file) + 1;
 
     char *command = malloc(len);

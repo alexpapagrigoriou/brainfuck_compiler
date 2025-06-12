@@ -99,7 +99,7 @@ static void generate_file(FILE *file, const char *code, int comma_counter) {
 }
 
 void generate_compiler_file(const char *code, int comma_counter) {
-    FILE *file = fopen("compiler/src/main.c", "w");
+    FILE *file = fopen("compiler_src/main.c", "w");
     if (!file) {
         perror("Error creating file.\n");
         exit(EXIT_FAILURE);
