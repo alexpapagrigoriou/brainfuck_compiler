@@ -40,7 +40,7 @@ static void dot(FILE *file) {
 
 static void comma(FILE *file) {
     print_tabs(file);
-    fprintf(file, "*ptr = next_comma_input();\n");
+    fprintf(file, "*ptr = next_comma_input(COMMA_COUNTER);\n");
 }
 
 static void open_bracket(FILE *file) {
@@ -81,16 +81,20 @@ static void generate_bf_source(FILE *file, const char *code) {
 static void generate_file(FILE *file, const char *code, int comma_counter) {
     fprintf(file, "#include \"main.h\"\n");
     fprintf(file, "\n");
+    fprintf(file, "#define COMMA_COUNTER %d\n", comma_counter);
+    fprintf(file, "\n");
     fprintf(file, "int main() {\n");
     fprintf(file, TAB "char bf[BF_SIZE] = {0};\n");
     fprintf(file, TAB "char *ptr = bf;\n");
     fprintf(file, "\n");
-    fprintf(file, TAB "get_comma_inputs(%d);\n", comma_counter);
+    fprintf(file, TAB "get_comma_inputs(COMMA_COUNTER);\n");
     fprintf(file, "\n");
 
     generate_bf_source(file, code);
 
     fprintf(file, TAB "putchar('\\n');\n");
+    fprintf(file, "\n");
+    fprintf(file, TAB "free_comma_inputs(COMMA_COUNTER);\n");
     fprintf(file, "\n");
     fprintf(file, TAB "return 0;\n");
     fprintf(file, "}\n");
