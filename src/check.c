@@ -1,22 +1,66 @@
 #include "check.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-void usage_message(const char *bf) {
-    fprintf(stderr, "Usage 1: %s <input_file>\n", bf);
-    fprintf(stderr, "Usage 2: %s <input_file> -o <output_file>\n", bf);
-    fprintf(stderr, "Usage 3: %s -o <output_file> <input_file>\n", bf);
-}
+#define BF_SIZE 30000
+#define BRACKET_MAX 100
 
-void check_args(int argc, char *argv[]) {
-    if (argc < 2 || argc == 3 || argc > 4) {
-        usage_message(argv[0]);
+void greater_than(size_t *index) {
+    if (*index >= BF_SIZE - 1) {
+        fprintf(stderr, "\nCompilation error: Range error.\n");
         exit(EXIT_FAILURE);
     }
 
-    if (argc == 4 && strcmp(argv[2], "-o") != 0 && strcmp(argv[1], "-o") != 0) {
-        usage_message(argv[0]);
+    (*index)++;
+}
+
+void less_than(size_t *index) {
+    if (*index <= 0) {
+        fprintf(stderr, "\nCompilation error: Range error.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    (*index)--;
+}
+
+void open_bracket(int *brackets) {
+    if (*brackets >= BRACKET_MAX - 1) {
+        fprintf(stderr, "\nCompilation error: Bracket stack overflow.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    (*brackets)++;
+}
+
+void close_bracket(int *brackets) {
+    if (*brackets <= 0) {
+        fprintf(stderr, "\nCompilation error: Unbalanced brackets.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    (*brackets)--;
+}
+
+void check_command(char c, int *brackets) {
+    static size_t index = 0;
+
+    switch (c) {
+        case '>': greater_than(&index); break;
+        case '<': less_than(&index); break;
+        case '[': open_bracket(brackets); break;
+        case ']': close_bracket(brackets); break;
+    }
+}
+
+void check_bf_code(char *code) {
+    int brackets = 0;
+
+    for (size_t i = 0; code[i] != '\0'; i++) {
+        check_command(code[i], &brackets);
+    }
+
+    if (brackets != 0) {
+        fprintf(stderr, "\nCompilation error: Unbalanced brackets - %d unmatched '['.\n", brackets);
         exit(EXIT_FAILURE);
     }
 }
