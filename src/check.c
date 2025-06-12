@@ -7,7 +7,7 @@
 
 static void greater_than(size_t *index) {
     if (*index >= BF_SIZE - 1) {
-        fprintf(stderr, "\nCompilation error: Range error.\n");
+        fprintf(stderr, "Compilation error: Range error.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -16,7 +16,7 @@ static void greater_than(size_t *index) {
 
 static void less_than(size_t *index) {
     if (*index <= 0) {
-        fprintf(stderr, "\nCompilation error: Range error.\n");
+        fprintf(stderr, "Compilation error: Range error.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -25,7 +25,7 @@ static void less_than(size_t *index) {
 
 static void open_bracket(int *brackets) {
     if (*brackets >= BRACKET_MAX - 1) {
-        fprintf(stderr, "\nCompilation error: Bracket stack overflow.\n");
+        fprintf(stderr, "Compilation error: Bracket stack overflow.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -34,7 +34,7 @@ static void open_bracket(int *brackets) {
 
 static void close_bracket(int *brackets) {
     if (*brackets <= 0) {
-        fprintf(stderr, "\nCompilation error: Unbalanced brackets.\n");
+        fprintf(stderr, "Compilation error: Unbalanced brackets.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -60,7 +60,7 @@ void check_bf_code(const char *code) {
     }
 
     if (brackets != 0) {
-        fprintf(stderr, "\nCompilation error: Unbalanced brackets - %d unmatched '['.\n", brackets);
+        fprintf(stderr, "Compilation error: Unbalanced brackets - %d unmatched '['.\n", brackets);
         exit(EXIT_FAILURE);
     }
 }
