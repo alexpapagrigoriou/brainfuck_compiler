@@ -24,14 +24,19 @@ void check_args(int argc, const char *argv[]) {
 
 void check_if_filename_is_valid(const char *filename) {
     if (filename[0] == '.' || filename[0] == '-') {
-        fprintf(stderr, "Invalid output_file: filename can't start with '.' or '-'.\n");
+        fprintf(stderr, "Invalid output_file: Filename can't start with '.' or '-'.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (strcmp(filename, "bf") == 0) {
+        fprintf(stderr, "Invalid output_file: Filename cannot match compiler name ('bf').\n");
         exit(EXIT_FAILURE);
     }
 
     for (const char *p = filename; *p != '\0'; p++) {
         char c = *p;
         if (!(isalnum((unsigned char)c) || c == '_' || c == '-' || c == '.')) {
-            fprintf(stderr, "Invalid filename: character '%c' is not allowed.\n", c);
+            fprintf(stderr, "Invalid output_file: Character '%c' is not allowed.\n", c);
             exit(EXIT_FAILURE);
         }
     }
