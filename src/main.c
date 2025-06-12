@@ -1,3 +1,4 @@
+#include "check.h"
 #include "input.h"
 
 int main(int argc, char *argv[]) {
@@ -8,7 +9,7 @@ int main(int argc, char *argv[]) {
 
     // get_bf_code_from_input_file(input_file);
 
-    // check_if_bf_code_is_valid();
+    // check_bf_code();
 
     // create_output_file();
 
