@@ -46,7 +46,7 @@ void get_comma_inputs(int comma_counter) {
 }
 
 char next_comma_input(int comma_counter) {
-    if (comma_index >= comma_counter - 1) {
+    if (comma_index >= comma_counter) {
         fprintf(stderr, "Runtime error: Comma input not found.\n");
         exit(EXIT_FAILURE);
     }
