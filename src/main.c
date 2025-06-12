@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 
     check_bf_code(code);
 
-    create_output_file(code, comma_counter);
+    create_output_file(code, comma_counter, output_file);
 
     return 0;
 }
