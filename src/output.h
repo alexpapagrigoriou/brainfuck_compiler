@@ -1,6 +1,8 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-void generate_compiler_file(const char *code, int comma_counter);
+#include <stddef.h>
+
+void generate_compiler_file(const char *code, size_t comma_counter);
 
 #endif

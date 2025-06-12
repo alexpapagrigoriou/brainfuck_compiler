@@ -78,10 +78,10 @@ static void generate_bf_source(FILE *file, const char *code) {
     }
 }
 
-static void generate_file(FILE *file, const char *code, int comma_counter) {
+static void generate_file(FILE *file, const char *code, size_t comma_counter) {
     fprintf(file, "#include \"main.h\"\n");
     fprintf(file, "\n");
-    fprintf(file, "#define COMMA_COUNTER %d\n", comma_counter);
+    fprintf(file, "#define COMMA_COUNTER %ld\n", comma_counter);
     fprintf(file, "\n");
     fprintf(file, "int main() {\n");
     fprintf(file, TAB "char bf[BF_SIZE] = {0};\n");
@@ -100,7 +100,7 @@ static void generate_file(FILE *file, const char *code, int comma_counter) {
     fprintf(file, "}\n");
 }
 
-void generate_compiler_file(const char *code, int comma_counter) {
+void generate_compiler_file(const char *code, size_t comma_counter) {
     FILE *file = fopen("compiler_src/main.c", "w");
     if (!file) {
         perror("Error creating file.\n");

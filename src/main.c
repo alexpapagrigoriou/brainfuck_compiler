@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "args.h"
 #include "check.h"
 #include "parser.h"
@@ -11,7 +12,7 @@ int main(int argc, char *argv[]) {
     char *input_file, *output_file;
     parse_input_output_files(argc, argv, &input_file, &output_file);
 
-    int comma_counter = 0;
+    size_t comma_counter = 0;
     char *code = read_bf_code(input_file, &comma_counter);
 
     check_bf_code(code);
