@@ -38,9 +38,11 @@ For example, if you have a file called `helloWorld.bf` inside the `sample_bf_cod
 ./bf sample_bf_code/helloWorld.bf
 ```
 
-This will compile the Brainfuck code and produce an executable named `a.out` by default.
+This will compile the Brainfuck code and produce an executable named `a.out` by default **inside the `bin` directory**.
 
-To specify a custom name for the output executable, use the -o flag. For example, to name the executable program, run either:
+> **Note:** All compiled executables are saved in the `bin` directory by default.
+
+To specify a custom name for the output executable, use the `-o` flag. For example, to name the executable `program`, run either:
 
 ```bash
 ./bf sample_bf_code/helloWorld.bf -o program
@@ -52,29 +54,44 @@ or
 ./bf -o program sample_bf_code/helloWorld.bf
 ```
 
+This will create the executable named `program` inside the `bin` directory.
+
+---
+
+### Run the compiled files
+
+After compilation, the executables are located in the `bin` directory.
+
+To run the default executable (`a.out`), use:
+
+```bash
+./bin/a.out
+```
+
+If you specified a custom name with the `-o` flag, run it like this:
+
+```bash
+./bin/your_executable_name
+```
+
+Replace `your_executable_name` with the actual name you provided.
+
 ---
 
 ### Clean
 
-To remove the `bf` compiler executable, all compiled executables, and the generated `main.c` file in `compiler_src`, run:
+To remove the `bf` compiler executable, all compiled executables, the generated `main.c` file in `compiler_src`, and clean all build directories including `compiler_build` and the `bin` directory, run:
 
 ```bash
 make clean
 ```
 
-Use this command when you want to rebuild the compiler from scratch or clean up all generated files.
+Use this command when you want to completely clean the project and rebuild the compiler from scratch. It removes:
 
----
-
-### Clean except the `bf` compiler
-
-If you want to remove all generated files **except** the `bf` compiler executable, run:
-
-```bash
-make clean_except_bf
-```
-
-Use this command to remove all generated files while keeping the `bf` compiler.
+- The `bf` executable and any other compiled executables in the bin directory.
+- All object files and build artifacts in the `compiler_build` directory.
+- The generated source file `main.c` inside `compiler_src`.
+- Any other generated files and directories related to the build.
 
 ---
 

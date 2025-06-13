@@ -9,6 +9,9 @@ OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 TARGET = bf
 
+MAKE_DIR = compiler_src
+MAKE_TARGET = clean
+
 .PHONY: all clean
 
 all: $(TARGET)
@@ -27,6 +30,5 @@ $(OBJ_DIR):
 
 clean:
 	@rm -rf $(OBJ_DIR) $(TARGET)
-	@find . -maxdepth 1 -type f ! -name 'Makefile' ! -name 'README.md' ! -name '.gitignore' -exec rm -f {} +
-	@$(MAKE) --no-print-directory -C compiler_src clean
 	@echo "Cleaned build directory and $(TARGET) executable."
+	@$(MAKE) --no-print-directory -C $(MAKE_DIR) $(MAKE_TARGET)

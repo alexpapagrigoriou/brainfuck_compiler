@@ -1,11 +1,6 @@
-/*
-
-!.gitignore
-!src/
-!compiler_src/
-!sample_bf_code/
-!Makefile
-!README.md
-!LICENSE
-
+bf
 compiler_src/main.c
+
+build/
+compiler_build/
+bin/
