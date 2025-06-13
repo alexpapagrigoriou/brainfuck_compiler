@@ -25,6 +25,10 @@ $(TARGET): $(OBJ) | $(TARGET_DIR)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
 	@echo "Built $(TARGET_DIR_NO_PREFIX)/$(TARGET_NAME) executable"
 
+$(TARGET_DIR):
+	@mkdir -p $(TARGET_DIR)
+	@echo "Created $(TARGET_DIR_NO_PREFIX) directory"
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled $(WORKING_DIR)/$< -> $(patsubst ../%,%,$@)"
@@ -32,10 +36,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo "Created $(OBJ_DIR_NO_PREFIX) directory"
-
-$(TARGET_DIR):
-	@mkdir -p $(TARGET_DIR)
-	@echo "Created $(TARGET_DIR_NO_PREFIX) directory"
 
 clean:
 	@rm -rf $(OBJ_DIR) $(TARGET_DIR) $(GENERATED_FILE)
