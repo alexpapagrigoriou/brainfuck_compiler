@@ -1,6 +1,5 @@
 bf
-compiler_src/main.c
-
 build/
 compiler_build/
 bin/
+compiler_src/main.c
