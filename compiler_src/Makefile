@@ -1,13 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 
-SRC_DIR = src
-OBJ_DIR = build
+SRC_DIR = .
+OBJ_DIR = ../compiler_build
+TARGET_DIR = ..
 
 SRC = $(wildcard $(SRC_DIR)/*.c)
 OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-TARGET = bf
+TARGET_NAME ?= a.out
+TARGET = $(TARGET_DIR)/$(TARGET_NAME)
+
+GENERATED_FILE = main.c
 
 .PHONY: all clean
 
@@ -26,7 +30,5 @@ $(OBJ_DIR):
 	@echo "Build started: $(OBJ_DIR) directory created successfully."
 
 clean:
-	@rm -rf $(OBJ_DIR) $(TARGET)
-	@find . -maxdepth 1 -type f ! -name 'Makefile' ! -name 'README.md' ! -name '.gitignore' -exec rm -f {} +
-	@$(MAKE) --no-print-directory -C compiler_src clean
-	@echo "Cleaned build directory and $(TARGET) executable."
+	@rm -rf $(OBJ_DIR) $(GENERATED_FILE)
+	@echo "Cleaned compiler_build directory and generated $(GENERATED_FILE)."

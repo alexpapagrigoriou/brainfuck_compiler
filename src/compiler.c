@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void compile_generated_file(const char *output_file) {
-    const char *template = "gcc compiler_src/main.c compiler_src/comma_input.c -o %s";
+    const char *template = "make --no-print-directory -C compiler_src TARGET_NAME=%s";
     size_t len = snprintf(NULL, 0, template, output_file) + 1;
 
     char *command = malloc(len);
@@ -24,6 +24,4 @@ void compile_generated_file(const char *output_file) {
         fprintf(stderr, "Error: gcc compilation failed with exit code %d.\n", WEXITSTATUS(status));
         exit(EXIT_FAILURE);
     }
-
-    printf("Build complete: %s created successfully.\n", output_file);
 }

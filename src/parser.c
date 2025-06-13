@@ -11,7 +11,7 @@ static void check_filename(const char *filename) {
     }
 
     if (strcmp(filename, "bf") == 0) {
-        fprintf(stderr, "Invalid output_file: Filename cannot match compiler name ('bf').\n");
+        fprintf(stderr, "Invalid output_file: Filename cannot match compiler name 'bf'.\n");
         exit(EXIT_FAILURE);
     }
 
