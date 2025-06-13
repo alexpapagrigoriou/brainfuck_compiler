@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define GENERATED_FILE "compiler_src/main.c"
 #define TAB "    "
 
 static int tab_counter = 1;
@@ -101,7 +102,7 @@ static void generate_file(FILE *file, const char *code, size_t comma_counter) {
 }
 
 void generate_compiler_file(const char *code, size_t comma_counter) {
-    FILE *file = fopen("compiler_src/main.c", "w");
+    FILE *file = fopen(GENERATED_FILE, "w");
     if (!file) {
         perror("Error creating file.\n");
         exit(EXIT_FAILURE);
@@ -110,4 +111,6 @@ void generate_compiler_file(const char *code, size_t comma_counter) {
     generate_file(file, code, comma_counter);
 
     fclose(file);
+
+    printf("Generated %s\n", GENERATED_FILE);
 }

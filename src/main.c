@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <stdlib.h>
 #include "args.h"
 #include "check.h"
 #include "parser.h"
@@ -20,6 +21,8 @@ int main(int argc, char *argv[]) {
     generate_compiler_file(code, comma_counter);
 
     compile_generated_file(output_file);
+
+    free(code);
 
     return 0;
 }

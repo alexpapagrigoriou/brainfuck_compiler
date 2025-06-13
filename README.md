@@ -18,13 +18,13 @@ This is a Brainfuck Compiler written in C. It supports all standard Brainfuck co
 
 ### Build the compiler
 
-To build the Brainfuck compiler executable, run:
+To build the Brainfuck executable compiler, run:
 
 ```bash
 make
 ```
 
-This will produce an executable called bf.
+This will produce an executable called `bf`.
 
 ---
 
@@ -88,10 +88,11 @@ make clean
 
 Use this command when you want to completely clean the project and rebuild the compiler from scratch. It removes:
 
-- The `bf` executable and any other compiled executables in the bin directory.
-- All object files and build artifacts in the `compiler_build` directory.
-- The generated source file `main.c` inside `compiler_src`.
-- Any other generated files and directories related to the build.
+- The `bf` executable compiler
+- The entire `build` directory and its contents
+- The entire `compiler_build` directory and its contents
+- The entire `bin` directory and its contents
+- The generated source file `main.c` inside `compiler_src`
 
 ---
 
