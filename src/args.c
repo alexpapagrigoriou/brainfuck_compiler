@@ -77,12 +77,17 @@ void check_args(int argc, char *argv[], compiler_t *compiler) {
             if (slash != NULL) {
                 base = slash + 1;
             }
-            snprintf(compiler->output_file, sizeof(compiler->output_file), "%s.c", base);
+
+            char base_copy[MAX_FILE_NAME_LENGTH - 2];
+            snprintf(base_copy, sizeof(base_copy), "%s", base);
+            char *dot = strrchr(base_copy, '.');
+            if (dot != NULL) {
+                *dot = '\0';
+            }
+
+            snprintf(compiler->output_file, sizeof(compiler->output_file), "%s.c", base_copy);
         } else {
             snprintf(compiler->output_file, sizeof(compiler->output_file), "a.out");
         }
     }
-
-    printf("Input file args: %s\n", compiler->input_file);
-    printf("Output file args: %s\n", compiler->output_file);
 }
