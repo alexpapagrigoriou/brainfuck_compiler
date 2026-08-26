@@ -1,5 +1,4 @@
-/bf
+/compile_commands.json
+
 /build/
-/compiler_build/
 /bin/
-/compiler_src/main.c
