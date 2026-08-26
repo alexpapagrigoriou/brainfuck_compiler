@@ -1,28 +1,23 @@
 #include "compiler.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+compiler_t compiler_create(void) {
+    compiler_t compiler;
 
-void compile_generated_file(const char *output_file) {
-    const char *template = "make --no-print-directory -C compiler_src TARGET_NAME=%s";
-    size_t len = snprintf(NULL, 0, template, output_file) + 1;
+    compiler.input_file[0] = '\0';
+    compiler.output_file[0] = '\0';
+    compiler.options = 0;
 
-    char *command = malloc(len);
-    if (!command) {
-        perror("Memory allocation failed.\n");
-        exit(EXIT_FAILURE);
-    }
+    return compiler;
+}
 
-    snprintf(command, len, template, output_file);
+void compiler_options_enable(compiler_options_t *options, uint8_t opt) {
+    *options |= opt;
+}
 
-    int status = system(command);
+void compiler_options_disable(compiler_options_t *options, uint8_t opt) {
+    *options &= ~opt;
+}
 
-    free(command);
-
-    if (status == -1) {
-        perror("Compilation error.\n");
-    } else if (WIFEXITED(status) && WEXITSTATUS(status) != 0) {
-        fprintf(stderr, "Error: gcc compilation failed with exit code %d.\n", WEXITSTATUS(status));
-        exit(EXIT_FAILURE);
-    }
+int compiler_options_is_enabled(compiler_options_t options, uint8_t option) {
+    return options & option;
 }

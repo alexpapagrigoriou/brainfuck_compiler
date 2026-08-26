@@ -9,9 +9,6 @@ OBJ = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 TARGET = bf
 
-MAKE_DIR = compiler_src
-MAKE_TARGET = clean
-
 .PHONY: all clean
 
 all: $(TARGET)
@@ -32,4 +29,3 @@ clean:
 	@rm -rf $(TARGET) $(OBJ_DIR)
 	@echo "Cleaned $(TARGET) executable compiler"
 	@echo "Cleaned $(OBJ_DIR) directory"
-	@$(MAKE) --no-print-directory -C $(MAKE_DIR) $(MAKE_TARGET)
