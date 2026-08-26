@@ -2,8 +2,6 @@
 
 This is a Brainfuck Compiler written in C. It supports all standard Brainfuck commands and handles input/output with proper memory management.
 
----
-
 ## Features
 
 - Supports Brainfuck commands: `><+-.,[]`
@@ -12,89 +10,44 @@ This is a Brainfuck Compiler written in C. It supports all standard Brainfuck co
 - Error handling for memory and range issues
 - Supports input from file or standard input
 
----
+## Requirements
 
-## Usage
+- GCC or Clang
+- GNU Make
 
-### Build the compiler
+## Building
 
-To build the Brainfuck executable compiler, run:
+### Build
 
 ```bash
 make
 ```
 
-This will produce an executable called `bf`.
+Output binary: `bin/bf`.
 
----
+### Run
 
-### Compile Brainfuck files
-
-Use the `bf` compiler to compile your Brainfuck files.
-
-For example, if you have a file called `helloWorld.bf` inside the `sample_bf_code` directory, run:
+Run the binary to display the unsage information:
 
 ```bash
-./bf sample_bf_code/helloWorld.bf
+./bin/bf --help
 ```
 
-This will compile the Brainfuck code and produce an executable named `a.out` by default **inside the `bin` directory**.
-
-> **Note:** All compiled executables are saved in the `bin` directory by default.
-
-To specify a custom name for the output executable, use the `-o` flag. For example, to name the executable `program`, run either:
+### Debug with GDB
 
 ```bash
-./bf sample_bf_code/helloWorld.bf -o program
+make gdb
 ```
 
-or
-
-```bash
-./bf -o program sample_bf_code/helloWorld.bf
-```
-
-This will create the executable named `program` inside the `bin` directory.
-
----
-
-### Run the compiled files
-
-After compilation, the executables are located in the `bin` directory.
-
-To run the default executable (`a.out`), use:
-
-```bash
-./bin/a.out
-```
-
-If you specified a custom name with the `-o` flag, run it like this:
-
-```bash
-./bin/your_executable_name
-```
-
-Replace `your_executable_name` with the actual name you provided.
-
----
+Builds the binary and launches it under `gdb`.
 
 ### Clean
-
-To remove the `bf` compiler executable, all compiled executables, the generated `main.c` file in `compiler_src`, and clean all build directories including `compiler_build` and the `bin` directory, run:
 
 ```bash
 make clean
 ```
 
-Use this command when you want to completely clean the project and rebuild the compiler from scratch. It removes:
-
-- The `bf` executable compiler
-- The entire `build` directory and its contents
-- The entire `compiler_build` directory and its contents
-- The entire `bin` directory and its contents
-- The generated source file `main.c` inside `compiler_src`
-
----
+Removes all generated build artifacts (`build/` and `bin/`).
 
 ## Brainfuck Commands
 

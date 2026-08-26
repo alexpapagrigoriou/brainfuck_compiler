@@ -29,9 +29,6 @@ LDFLAGS :=
 
 all: $(BIN_DIR)/$(TARGET)
 
-run: all
-	@./$(BIN_DIR)/$(TARGET)
-
 $(BIN_DIR)/$(TARGET): $(OBJS) | $(BIN_DIR)
 	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
@@ -51,4 +48,4 @@ clean:
 compile-db:
 	@bear -- make -B all
 
-.PHONY: all run gdb clean compile-db
+.PHONY: all gdb clean compile-db
