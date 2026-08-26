@@ -27,7 +27,7 @@ Output binary: `bin/bf`.
 
 ### Run
 
-Run the binary to display the unsage information:
+Run the binary to display the unsage information.
 
 ```bash
 ./bin/bf --help
