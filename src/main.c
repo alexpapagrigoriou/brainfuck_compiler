@@ -1,11 +1,12 @@
 #include <stddef.h>
 #include <stdlib.h>
+
 #include "args.h"
 #include "check.h"
-#include "parser.h"
+#include "compiler.h"
 #include "input.h"
 #include "output.h"
-#include "compiler.h"
+#include "parser.h"
 
 int main(int argc, char *argv[]) {
     check_args(argc, argv);

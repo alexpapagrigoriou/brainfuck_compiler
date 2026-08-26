@@ -1,4 +1,5 @@
 #include "input.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,7 +37,7 @@ static char *file_input(const char *filename, size_t *size, size_t *capacity, ch
 
     int c;
     while ((c = fgetc(file)) != EOF) {
-        code = add_command(size, capacity, code, (char) c, comma_counter);
+        code = add_command(size, capacity, code, (char)c, comma_counter);
     }
 
     fclose(file);

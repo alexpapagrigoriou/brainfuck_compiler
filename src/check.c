@@ -1,4 +1,5 @@
 #include "check.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -45,10 +46,18 @@ static void check_command(char c, int *brackets) {
     static size_t index = 0;
 
     switch (c) {
-        case '>': greater_than(&index); break;
-        case '<': less_than(&index); break;
-        case '[': open_bracket(brackets); break;
-        case ']': close_bracket(brackets); break;
+    case '>':
+        greater_than(&index);
+        break;
+    case '<':
+        less_than(&index);
+        break;
+    case '[':
+        open_bracket(brackets);
+        break;
+    case ']':
+        close_bracket(brackets);
+        break;
     }
 }
 

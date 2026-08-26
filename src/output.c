@@ -1,4 +1,5 @@
 #include "output.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -62,14 +63,30 @@ static void close_bracket(FILE *file) {
 
 static void generate_command(FILE *file, char c) {
     switch (c) {
-        case '>': greater_than(file); break;
-        case '<': less_than(file); break;
-        case '+': plus(file); break;
-        case '-': minus(file); break;
-        case '.': dot(file); break;
-        case ',': comma(file); break;
-        case '[': open_bracket(file); break;
-        case ']': close_bracket(file); break;
+    case '>':
+        greater_than(file);
+        break;
+    case '<':
+        less_than(file);
+        break;
+    case '+':
+        plus(file);
+        break;
+    case '-':
+        minus(file);
+        break;
+    case '.':
+        dot(file);
+        break;
+    case ',':
+        comma(file);
+        break;
+    case '[':
+        open_bracket(file);
+        break;
+    case ']':
+        close_bracket(file);
+        break;
     }
 }
 
