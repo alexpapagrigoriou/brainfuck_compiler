@@ -97,8 +97,6 @@ Brainfuck is a minimalist programming language with only 8 commands. These comma
     </tbody>
 </table>
 
----
-
 ## Example: Hello World
 
 Here’s a classic Brainfuck program that prints **"Hello World!"**:
@@ -114,8 +112,6 @@ Here’s a classic Brainfuck program that prints **"Hello World!"**:
 - The `+` and `-` commands increment or decrement cell values.
 - The `.` command outputs the current cell’s ASCII character.
 - Together, these commands print "Hello World!" one character at a time.
-
----
 
 ## Example: Simple Input/Output Test
 
