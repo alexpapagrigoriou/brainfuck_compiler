@@ -3,6 +3,6 @@
 
 #include "compiler.h"
 
-void check_args(int argc, char *argv[], compiler_t *compiler);
+compiler_t check_args(int argc, char *argv[]);
 
 #endif

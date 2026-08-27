@@ -9,9 +9,7 @@
 #include "output.h"
 
 int main(int argc, char *argv[]) {
-    compiler_t compiler = compiler_create();
-
-    check_args(argc, argv, &compiler);
+    compiler_t compiler = check_args(argc, argv);
 
     size_t comma_counter = 0;
     char *code = read_bf_code(compiler.input_file, &comma_counter);

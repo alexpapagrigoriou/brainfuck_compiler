@@ -15,7 +15,7 @@ typedef struct {
     compiler_options_t options;
 } compiler_t;
 
-compiler_t compiler_create(void);
+compiler_t compiler_create(char *input_file, char *output_file, compiler_options_t options);
 
 void compiler_options_enable(compiler_options_t *options, uint8_t opt);
 void compiler_options_disable(compiler_options_t *options, uint8_t opt);

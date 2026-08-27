@@ -33,15 +33,16 @@ static void check_filename(const char *filename) {
     }
 }
 
-void check_args(int argc, char *argv[], compiler_t *compiler) {
+compiler_t check_args(int argc, char *argv[]) {
     int input = -1, output = -1;
+    compiler_options_t options = 0;
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) {
             usage_message(argv[0]);
             exit(EXIT_SUCCESS);
         } else if (strcmp(argv[i], "-c") == 0) {
-            compiler_options_enable(&compiler->options, OPT_C_SOURCE_CODE);
+            compiler_options_enable(&options, OPT_C_SOURCE_CODE);
         } else if (strcmp(argv[i], "-o") == 0) {
             i++;
             if (i >= argc) {
@@ -66,28 +67,5 @@ void check_args(int argc, char *argv[], compiler_t *compiler) {
         exit(EXIT_FAILURE);
     }
 
-    snprintf(compiler->input_file, sizeof(compiler->input_file), "%s", argv[input]);
-
-    if (output != -1) {
-        snprintf(compiler->output_file, sizeof(compiler->output_file), "%s", argv[output]);
-    } else {
-        if (compiler_options_is_enabled(compiler->options, OPT_C_SOURCE_CODE)) {
-            const char *base = argv[input];
-            const char *slash = strrchr(base, '/');
-            if (slash != NULL) {
-                base = slash + 1;
-            }
-
-            char base_copy[MAX_FILE_NAME_LENGTH - 2];
-            snprintf(base_copy, sizeof(base_copy), "%s", base);
-            char *dot = strrchr(base_copy, '.');
-            if (dot != NULL) {
-                *dot = '\0';
-            }
-
-            snprintf(compiler->output_file, sizeof(compiler->output_file), "%s.c", base_copy);
-        } else {
-            snprintf(compiler->output_file, sizeof(compiler->output_file), "a.out");
-        }
-    }
+    return compiler_create(argv[input], output == -1 ? NULL : argv[output], options);
 }
